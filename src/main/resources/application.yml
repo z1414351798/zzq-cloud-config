@@ -8,7 +8,7 @@ spring:
         git:
           uri: git@github.com:z1414351798/zzq-cloud-config.git
           default-label: master
-          searchPaths: resources
+          searchPaths: src/main/resources
   security:
     oauth2:
       resourceserver:
