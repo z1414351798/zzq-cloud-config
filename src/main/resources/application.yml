@@ -6,5 +6,28 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/your-org/config-repo
-          default-label: main
+          uri: git@github.com:z1414351798/zzq-cloud-config.git
+          default-label: master
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/myrealm
+  kafka:
+    bootstrap-servers: localhost:9092,localhost:9094,localhost:9096
+    consumer:
+      group-id: ${spring.application.name}-bus
+      auto-offset-reset: earliest
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh, refresh, health, info
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
